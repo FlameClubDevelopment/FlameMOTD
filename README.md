@@ -1,0 +1,2 @@
+# FlameMOTD
+Simple MOTDCountdown plugin.
