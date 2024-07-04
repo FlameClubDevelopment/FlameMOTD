@@ -1,4 +1,4 @@
-# FlameMOTD | 1.0
+# FlameMOTD | 1.7.x-1.21.x
 * By FlameClubDevelopment
 
 # Features
