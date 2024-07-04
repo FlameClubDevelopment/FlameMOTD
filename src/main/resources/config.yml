@@ -1,0 +1,16 @@
+# Main Config
+date: '06/24/24 17:00:00' # Format is "MM/dd/yy HH:mm:ss" hour format in 24h clock.
+timezone: 'EST' # GMT, UTC-3, etc
+motd: '&c&lFlameMOTD &7| &4&l100% OFF &f@ &4&ldsc.gg/flameclub &c❤ %newline &7» &a&lSOTW &7(HCF) &ftakes place in &c&l&n%time' # %newline > second line > %time for the time
+time-value-end: '&c&l&nRIGHT NOW!!'
+
+# Time Config
+time-day: 'd,' #d #day etc.
+time-hours: 'h,' #h #hour #hrs etc.
+time-minutes: 'm,' #m #minute #mins etc.
+time-seconds: 's' #s #seconds #secs etc.
+
+# Misc Config
+slots: 3500 # Max Slots
+command-finish: '' # Ex: whitelist off
+clock-type: 1 # 1 > Custom Time 2 > d:h:m:s

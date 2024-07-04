@@ -1,0 +1,7 @@
+name: FlameMOTD
+author: FlameClubDevelopment
+version: 1.0-SNAPSHOT
+main: club.flame.flamemotd.FlameMOTD
+commands:
+  flamemotd:
+    description: Reload config.yml
