@@ -10,6 +10,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
+
+import club.flame.flamemotd.utils.CC;
+import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.event.ProxyPingEvent;
@@ -28,6 +31,15 @@ public class Main extends Plugin implements Listener {
    public void onEnable() {
       this.getProxy().getPluginManager().registerListener(this, this);
       this.getProxy().getPluginManager().registerCommand(this, new FlameMOTDCommand(this));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate("&4&m=============================="));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate("&cFlameMOTD &8- &fv" + getDescription().getVersion()));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate(""));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate("&4Author&f: " + getDescription().getAuthor()));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate("&4State&f: &aEnabled"));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate(""));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate("&7&oThank you for using FlameMOTD"));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate("&7&oJoin our Discord dsc.gg/flameclubdevelopment"));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate("&4&m=============================="));
       if (!this.getDataFolder().exists()) {
          this.getDataFolder().mkdir();
          File file = new File(this.getDataFolder(), "config.yml");
@@ -216,6 +228,18 @@ public class Main extends Plugin implements Listener {
       } else {
          return 0;
       }
+   }
+
+   public void onDisable() {
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate("&4&m=============================="));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate("&cFlameMOTD &8- &fv" + getDescription().getVersion()));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate(""));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate("&4Author&f: " + getDescription().getAuthor()));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate("&4State&f: &cDisabled"));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate(""));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate("&7&oThank you for using FlameMOTD"));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate("&7&oJoin our Discord dsc.gg/flameclubdevelopment"));
+      BungeeCord.getInstance().getConsole().sendMessage(CC.translate("&4&m=============================="));
    }
 
    public static String t(String i) {
