@@ -47,8 +47,8 @@ public class FlameMOTD extends JavaPlugin implements Listener {
             if (FlameMOTD.this.getCountdown() == 0) {
                FlameMOTD.this.cancelTask(FlameMOTD.this.taskId);
                FlameMOTD.this.taskId = -1;
-               Bukkit.getServer().dispatchCommand(FlameMOTD.this.getServer().getConsoleSender(), FlameMOTD.this.getConfig().getString("command-finish"));
-               System.out.println("Command-Finish has been successfully executed!");
+               Bukkit.getServer().dispatchCommand(FlameMOTD.this.getServer().getConsoleSender(), FlameMOTD.this.getConfig().getString("END.COMMAND"));
+               System.out.println("Finish Command has been successfully executed!");
             }
 
          }
@@ -61,12 +61,12 @@ public class FlameMOTD extends JavaPlugin implements Listener {
 
    public int getCountdown() {
       FileConfiguration config = this.getConfig();
-      String dateStop = config.getString("date");
+      String dateStop = config.getString("TIME.DATE");
       SimpleDateFormat format = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
       Date date = null;
 
       try {
-         format.setTimeZone(TimeZone.getTimeZone(config.getString("timezone")));
+         format.setTimeZone(TimeZone.getTimeZone(config.getString("TIME.TIMEZONE")));
          date = format.parse(dateStop);
       } catch (ParseException var9) {
          var9.printStackTrace();
@@ -85,9 +85,9 @@ public class FlameMOTD extends JavaPlugin implements Listener {
    @EventHandler
    public void onPing(ServerListPingEvent e) {
       FileConfiguration config = this.getConfig();
-      String message = config.getString("motd").replaceAll("%time", this.getTime()).replaceAll("%newline", "\n");
+      String message = config.getString("MOTD").replaceAll("%time%", this.getTime()).replaceAll("%newline%", "\n");
       e.setMotd(t(message));
-      e.setMaxPlayers(config.getInt("slots"));
+      e.setMaxPlayers(config.getInt("SLOTS"));
    }
 
    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
@@ -113,12 +113,12 @@ public class FlameMOTD extends JavaPlugin implements Listener {
 
    public String getTime() {
       FileConfiguration config = this.getConfig();
-      String dateStop = config.getString("date");
+      String dateStop = config.getString("TIME.DATE");
       SimpleDateFormat format = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
       Date date = null;
 
       try {
-         format.setTimeZone(TimeZone.getTimeZone(config.getString("timezone")));
+         format.setTimeZone(TimeZone.getTimeZone(config.getString("TIME.TIMEZONE")));
          date = format.parse(dateStop);
       } catch (ParseException var23) {
          var23.printStackTrace();
@@ -127,7 +127,7 @@ public class FlameMOTD extends JavaPlugin implements Listener {
       Date current = new Date();
       long diff = date.getTime() - current.getTime();
       if (diff < 0L) {
-         return config.getString(t("time-value-end"));
+         return config.getString(t("END.TEXT"));
       } else {
          long days;
          long hours;
@@ -136,7 +136,7 @@ public class FlameMOTD extends JavaPlugin implements Listener {
          long rhours;
          long rminutes;
          long rseconds;
-         if (config.getInt("clock-type") == 1) {
+         if (config.getInt("CLOCK-TYPE") == 1) {
             days = TimeUnit.MILLISECONDS.toDays(diff);
             hours = TimeUnit.MILLISECONDS.toHours(diff);
             minutes = TimeUnit.MILLISECONDS.toMinutes(diff);
@@ -146,39 +146,39 @@ public class FlameMOTD extends JavaPlugin implements Listener {
             rseconds = minutes == 0L ? days2 : days2 % (minutes * 60L);
             StringBuilder sb = new StringBuilder();
             if (days > 1L) {
-               sb.append(String.valueOf(days) + config.getString("time-day"));
+               sb.append(String.valueOf(days) + config.getString("DAYS"));
             }
 
             if (days == 1L) {
-               sb.append(String.valueOf(days) + config.getString("time-day"));
+               sb.append(String.valueOf(days) + config.getString("DAYS"));
             }
 
             if (rhours > 1L) {
-               sb.append(String.valueOf(days > 0L ? " " : "") + rhours + config.getString("time-hours"));
+               sb.append(String.valueOf(days > 0L ? " " : "") + rhours + config.getString("HOURS"));
             }
 
             if (rhours == 1L) {
-               sb.append(String.valueOf(days > 0L ? " " : "") + rhours + config.getString("time-hours"));
+               sb.append(String.valueOf(days > 0L ? " " : "") + rhours + config.getString("HOURS"));
             }
 
             if (rminutes > 1L) {
-               sb.append(String.valueOf((days <= 0L || hours > 0L) && hours <= 0L ? "" : " ") + rminutes + config.getString("time-minutes"));
+               sb.append(String.valueOf((days <= 0L || hours > 0L) && hours <= 0L ? "" : " ") + rminutes + config.getString("MINUTES"));
             }
 
             if (rminutes == 1L) {
-               sb.append(String.valueOf((days <= 0L || hours > 0L) && hours <= 0L ? "" : " ") + rminutes + config.getString("time-minutes"));
+               sb.append(String.valueOf((days <= 0L || hours > 0L) && hours <= 0L ? "" : " ") + rminutes + config.getString("MINUTES"));
             }
 
             if (rseconds > 1L) {
-               sb.append(String.valueOf((days <= 0L && hours <= 0L || minutes > 0L) && minutes <= 0L ? "" : " ") + rseconds + config.getString("time-seconds"));
+               sb.append(String.valueOf((days <= 0L && hours <= 0L || minutes > 0L) && minutes <= 0L ? "" : " ") + rseconds + config.getString("SECONDS"));
             }
 
             if (rseconds == 1L) {
-               sb.append(String.valueOf((days <= 0L && hours <= 0L || minutes > 0L) && minutes <= 0L ? "" : " ") + rseconds + config.getString("time-seconds"));
+               sb.append(String.valueOf((days <= 0L && hours <= 0L || minutes > 0L) && minutes <= 0L ? "" : " ") + rseconds + config.getString("SECONDS"));
             }
 
             return sb.toString();
-         } else if (config.getInt("clock-type") == 2) {
+         } else if (config.getInt("CLOCK-TYPE") == 2) {
             days = TimeUnit.MILLISECONDS.toSeconds(diff);
             hours = TimeUnit.MILLISECONDS.toMinutes(diff);
             minutes = TimeUnit.MILLISECONDS.toHours(diff);

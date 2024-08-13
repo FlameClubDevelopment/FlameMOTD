@@ -1,5 +1,5 @@
-# FlameMOTD | 1.0.1
+# FlameMOTD | 2.0
 * By FlameClubDevelopment
 
 # Features
-* The original MOTDCountdown plugin with customizable time text
+* The original MOTDCountdown plugin with more customizable features

@@ -1,5 +1,6 @@
 package club.flame.flamemotd.bungee;
 
+import club.flame.flamemotd.FlameMOTD;
 import club.flame.flamemotd.utils.CC;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
@@ -9,7 +10,7 @@ public class FlameMOTDCommand extends Command {
    private Main plugin;
 
    public FlameMOTDCommand(Main plugin) {
-      super("flamemotd", "", "motd");
+      super("flamemotd", "", "motd", "motdcountdown");
       this.plugin = plugin;
    }
 
@@ -25,14 +26,14 @@ public class FlameMOTDCommand extends Command {
             }
          } else {
             sender.sendMessage(CC.translate("&4&m=============================="));
-            sender.sendMessage(CC.translate("&c&lFlameMOTD&7 &8- &71.0.1"));
+            sender.sendMessage(CC.translate("&c&lFlameMOTD&7 &8- &7" + FlameMOTD.getInstance().getDescription().getVersion()));
             sender.sendMessage(CC.translate(""));
             sender.sendMessage(CC.translate("&8- &7/flamemotd reload"));
             sender.sendMessage(CC.translate("&4&m=============================="));
          }
       } else {
          sender.sendMessage(CC.translate("&4&m=============================="));
-         sender.sendMessage(CC.translate("&c&lFlameMOTD&7 &8- &71.0.1"));
+         sender.sendMessage(CC.translate("&c&lFlameMOTD&7 &8- &7" + FlameMOTD.getInstance().getDescription().getVersion()));
          sender.sendMessage(CC.translate(""));
          sender.sendMessage(CC.translate("&8- &7/flamemotd reload"));
          sender.sendMessage(CC.translate("&4&m=============================="));

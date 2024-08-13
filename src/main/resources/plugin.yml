@@ -1,6 +1,6 @@
 name: FlameMOTD
 author: HCFAlerts
-version: 1.0.1
+version: 2.0
 main: club.flame.flamemotd.FlameMOTD
 commands:
   flamemotd:
